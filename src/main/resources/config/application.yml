@@ -1,0 +1,12 @@
+thymeleaf:
+    cache: false
+spring:
+  application:
+    name: JACOSS (Just Another eCommerce Open Source Software)
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+
+liquibase:
+  change-log: classpath:/liquibase/master.xml
