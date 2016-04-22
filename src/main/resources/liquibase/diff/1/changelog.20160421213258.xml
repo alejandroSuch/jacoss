@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="alejandro (generated)" id="1461274385869-1">
+        <createTable tableName="categories">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN"/>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="sort_order" type="INT"/>
+            <column name="id_category" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-2">
+        <createTable tableName="categories_description">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="CLOB"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="id_category" type="VARCHAR(255)"/>
+            <column name="id_language" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-3">
+        <createTable tableName="languages">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="TINYINT(1)"/>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="is_default" type="TINYINT(1)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sort_order" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-4">
+        <addPrimaryKey columnNames="id" constraintName="categoriesPK" tableName="categories"/>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-5">
+        <addPrimaryKey columnNames="id" constraintName="categories_descriptionPK" tableName="categories_description"/>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-6">
+        <addPrimaryKey columnNames="id" constraintName="languagesPK" tableName="languages"/>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-7">
+        <addUniqueConstraint columnNames="code" constraintName="UC_LANGUAGESCODE_COL" tableName="languages"/>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-8">
+        <addForeignKeyConstraint baseColumnNames="id_category" baseTableName="categories" constraintName="FK_1nnfal0b21l6ewctn5csok6fa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="categories"/>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-9">
+        <addForeignKeyConstraint baseColumnNames="id_language" baseTableName="categories_description" constraintName="FK_6w71f43ly6ugu4dtw3csu9ccj" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="languages"/>
+    </changeSet>
+    <changeSet author="alejandro (generated)" id="1461274385869-10">
+        <addForeignKeyConstraint baseColumnNames="id_category" baseTableName="categories_description" constraintName="FK_qifg494o4l86jiwr3lc2fb9cr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="categories"/>
+    </changeSet>
+</databaseChangeLog>
