@@ -3,6 +3,7 @@ package org.redlion.jacoss.domain;
 import org.redlion.jacoss.domain.base.BaseEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Set;
 
 import static org.redlion.jacoss.domain.constants.ColumnNames.*;
@@ -17,6 +18,7 @@ public class Category extends BaseEntity {
     @Column(name = COL_CODE)
     private String code;
 
+    @Min(1)
     @Column(name = COL_SORT_ORDER)
     private Integer sortOrder;
 
@@ -27,9 +29,9 @@ public class Category extends BaseEntity {
     @JoinColumn(name = COL_ID_CATEGORY)
     Category parentCategory;
 
-    @OneToMany(mappedBy = "parentCategory", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parentCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<Category> children;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<CategoryDescription> descriptions;
 }
