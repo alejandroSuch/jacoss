@@ -1,12 +1,24 @@
 thymeleaf:
     cache: false
+
 spring:
   application:
     name: JACOSS (Just Another eCommerce Open Source Software)
   jpa:
     hibernate:
       ddl-auto: none
-
-
+  jade4j:
+    mode: XHTML
+#  cache:
+#    ehcache:
+#      config: classpath:config/cache/ehcache-config.xml
 liquibase:
   change-log: classpath:/liquibase/master.xml
+
+
+# security:
+#   basic:
+#     enabled: false
+# management:
+#   security:
+#     enabled: false

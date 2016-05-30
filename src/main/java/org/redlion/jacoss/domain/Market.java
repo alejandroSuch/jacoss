@@ -1,32 +1,33 @@
 package org.redlion.jacoss.domain;
 
 import org.redlion.jacoss.domain.base.BaseEntity;
+import org.redlion.jacoss.domain.constants.TableNames;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.redlion.jacoss.domain.constants.ColumnNames.*;
-import static org.redlion.jacoss.domain.constants.TableNames.TBL_MARKETS;
 
 /**
  * Created by alejandro on 22/4/16.
  */
 @Entity
-@Table(name = TBL_MARKETS)
+@Table(name = TableNames.MARKET)
 public class Market extends BaseEntity {
     @NotNull
-    @Column(name = COL_CODE, unique = true)
+    @Column(name = CODE, unique = true)
     @Size(max = 2, min = 2)
     private String code;
 
     @Min(1)
-    @Column(name = COL_SORT_ORDER)
+    @Column(name = SORT_ORDER)
     private Integer sortOrder;
 
-    @Column(name = COL_IS_ACTIVE)
+    @Column(name = IS_ACTIVE)
     private Boolean active;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "market", cascade = CascadeType.ALL)
@@ -57,6 +58,9 @@ public class Market extends BaseEntity {
     }
 
     public Set<MarketDescription> getDescriptions() {
+        if (this.descriptions == null) {
+            this.descriptions = new HashSet<>();
+        }
         return descriptions;
     }
 

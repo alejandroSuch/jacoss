@@ -1,2 +1,7 @@
 liquibase:
   contexts: test
+  enabled: false
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update

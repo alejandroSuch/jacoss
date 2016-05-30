@@ -1,9 +1,7 @@
 package org.redlion.jacoss.domain;
 
 import org.redlion.jacoss.domain.base.BaseEntity;
-import static org.redlion.jacoss.domain.constants.ColumnNames.*;
-import static org.redlion.jacoss.domain.constants.TableNames.*;
-import static org.redlion.jacoss.domain.constants.Indexes.*;
+import org.redlion.jacoss.domain.constants.TableNames;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,35 +11,38 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import static org.redlion.jacoss.domain.constants.ColumnNames.*;
+import static org.redlion.jacoss.domain.constants.Indexes.IDX_LANGUAGE_CODE;
+
 /**
  * Created by alejandro on 15/04/2016.
  */
 @Entity
 @Table(
-        name = TBL_LANGUAGES,
+        name = TableNames.LANGUAGE,
         indexes = {
-                @Index(name = IDX_LANGUAGE_CODE, columnList = COL_CODE)
+                @Index(name = IDX_LANGUAGE_CODE, columnList = CODE)
         }
 )
 public class Language extends BaseEntity {
     @NotNull
     @Size(max = 255)
-    @Column(name = COL_NAME)
+    @Column(name = NAME)
     private String name;
 
     @NotNull
     @Size(max = 2, min = 2)
-    @Column(name = COL_CODE, unique = true)
+    @Column(name = CODE, unique = true)
     private String code;
 
     @Min(1)
-    @Column(name = COL_SORT_ORDER)
+    @Column(name = SORT_ORDER)
     private Integer sortOrder;
 
-    @Column(name = COL_IS_DEFAULT, columnDefinition = "TINYINT(1)")
+    @Column(name = IS_DEFAULT, columnDefinition = "TINYINT(1)")
     private Boolean defaultLang = Boolean.FALSE;
 
-    @Column(name = COL_IS_ACTIVE, columnDefinition = "TINYINT(1)")
+    @Column(name = IS_ACTIVE, columnDefinition = "TINYINT(1)")
     private Boolean active = Boolean.TRUE;
 
     public String getName() {

@@ -1,42 +1,42 @@
 package org.redlion.jacoss.domain;
 
-import org.redlion.jacoss.domain.base.BaseEntity;
-import org.redlion.jacoss.domain.constants.TableNames;
+import org.redlion.jacoss.domain.constants.ColumnNames;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import static org.redlion.jacoss.domain.constants.ColumnNames.*;
 /**
- * Created by alejandro on 15/04/2016.
+ * Created by alejandro on 3/5/16.
  */
-@Entity
-@Table(name = TableNames.CATEGORY_DESCRIPTION)
-public class CategoryDescription extends BaseEntity {
+public class ProductDescription {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = ID_CATEGORY)
-    Category category;
+    @JoinColumn(name = ColumnNames.ID_PRODUCT)
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = ID_LANGUAGE)
+    @JoinColumn(name = ColumnNames.ID_LANGUAGE)
     Language language;
 
     @NotNull
-    @Size(min = 0, max = 255)
-    @Column(name = NAME)
+    @Size(max = 255)
+    @Column(name = ColumnNames.NAME)
     String name;
 
     @NotNull
-    @Column(name = DESCRIPTION, columnDefinition = "TEXT")
+    @Size(max = 2040)
+    @Column(name = ColumnNames.DESCRIPTION)
     String description;
 
-    public Category getCategory() {
-        return category;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Language getLanguage() {
