@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 )
 @EnableJpaRepositories("org.redlion.jacoss.repository")
 public class DataConfiguration {
-    /*@Bean
+    @Bean
     DateTimeProvider dateTimeProvider(DateTimeService dateTimeService) {
         return new AuditingDateTimeProvider(dateTimeService);
     }
@@ -30,5 +30,5 @@ public class DataConfiguration {
     //http://www.petrikainulainen.net/programming/spring-framework/spring-data-jpa-tutorial-auditing-part-two/
     AuditorAware<String> auditorProvider() {
         return new UsernameAuditorAware();
-    }*/
+    }
 }

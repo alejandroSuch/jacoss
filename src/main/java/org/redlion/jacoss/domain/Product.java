@@ -1,5 +1,6 @@
 package org.redlion.jacoss.domain;
 
+import org.redlion.jacoss.domain.base.BaseEntity;
 import org.redlion.jacoss.domain.constants.ColumnNames;
 import org.redlion.jacoss.domain.constants.TableNames;
 
@@ -12,14 +13,14 @@ import java.util.Set;
  */
 @Entity
 @Table(name = TableNames.PRODUCT)
-public class Product {
+public class Product extends BaseEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = TableNames.PRODUCT_CATEGORY,
             joinColumns = @JoinColumn(name = ColumnNames.ID_PRODUCT, referencedColumnName = ColumnNames.ID),
             inverseJoinColumns = @JoinColumn(name = ColumnNames.ID_CATEGORY, referencedColumnName = ColumnNames.ID)
     )
-    Set<Category>categories;
+    Set<Category> categories;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -27,7 +28,7 @@ public class Product {
             joinColumns = @JoinColumn(name = ColumnNames.ID_PRODUCT, referencedColumnName = ColumnNames.ID),
             inverseJoinColumns = @JoinColumn(name = ColumnNames.ID_CATEGORY, referencedColumnName = ColumnNames.ID)
     )
-    Set<Market>markets;
+    Set<Market> markets;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     Set<ProductDescription> descriptions;

@@ -15,5 +15,6 @@ public class TableNames {
     public static final String CURRENCY = "currency";
     public static final String PRODUCT = "product";
     public static final String PRODUCT_CATEGORY = "product_category";
+    public static final String PRODUCT_DESCRIPTION = "product_description";
     public static final String PRODUCT_MARKET = "product_market";
 }
