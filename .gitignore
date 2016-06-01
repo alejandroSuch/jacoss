@@ -3,3 +3,4 @@ jacoss.iml
 .idea
 .mvn
 target
+src/main/webapp/bower_components
