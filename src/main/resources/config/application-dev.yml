@@ -1,2 +1,6 @@
 liquibase:
   contexts: dev
+spring:
+  jade4j:
+    caching: false
+    prettyPrint: true
