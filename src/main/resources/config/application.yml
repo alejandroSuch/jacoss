@@ -16,9 +16,9 @@ liquibase:
   change-log: classpath:/liquibase/master.xml
 
 
-# security:
-#   basic:
-#     enabled: false
-# management:
-#   security:
-#     enabled: false
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
